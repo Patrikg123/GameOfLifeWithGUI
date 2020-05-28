@@ -24,5 +24,10 @@ namespace GameOfLifeWithGUI
         {
             InitializeComponent();
         }
+
+        private void ButtonStart(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
