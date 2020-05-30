@@ -9,6 +9,7 @@
     <Grid>
         <Canvas x:Name ="Brade" HorizontalAlignment="Left" Height="250" Margin="130,39,0,0" VerticalAlignment="Top" Width="250"/>
         <Button  Content="Start" HorizontalAlignment="Left" Margin="600,300,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.925,10.691" Click="ButtonStart"/>
+        <Button  Content="Next step" HorizontalAlignment="Left" Margin="600,351,0,0" VerticalAlignment="Top" Width="75" Click="ButtonNext_Click"/>
 
     </Grid>
 </Window>

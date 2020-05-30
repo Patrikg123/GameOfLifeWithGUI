@@ -25,10 +25,12 @@ namespace GameOfLifeWithGUI
             InitializeComponent();
         }
 
+        int antalCellerLangden = 30;
+        int antalCellerHojden = 30;
+
         private void ButtonStart(object sender, RoutedEventArgs e)
         {
-            int antalCellerLangden = 30;
-            int antalCellerHojden = 30;
+            
 
             for (int i = 0; i < antalCellerHojden; i++)
             {
@@ -41,6 +43,37 @@ namespace GameOfLifeWithGUI
                     Brade.Children.Add(r);
                     Canvas.SetLeft(r, j * Brade.ActualWidth / antalCellerLangden);
                     Canvas.SetTop(r, i * Brade.ActualHeight / antalCellerHojden);
+                    r.MouseDown += R_MouseDown;
+                }
+            }
+        }
+
+        private void R_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if(((Rectangle)sender).Fill == Brushes.Red)
+                {
+                ((Rectangle)sender).Fill = Brushes.Black;
+                    
+                }
+
+           else { ((Rectangle)sender).Fill = Brushes.Red; }
+        }
+
+        private void ButtonNext_Click(object sender, RoutedEventArgs e)
+        {
+            int[] numberOfNeighbours;
+            for (int i = 0; i < antalCellerHojden; i++)
+            {
+                for (int j = 0; j < antalCellerLangden; j++)
+                {
+                    Rectangle r = new Rectangle();
+                    r.Width = Brade.ActualWidth / antalCellerLangden - 3.0;
+                    r.Height = Brade.ActualHeight / antalCellerHojden - 3.0;
+                    r.Fill = Brushes.Red;
+                    Brade.Children.Add(r);
+                    Canvas.SetLeft(r, j * Brade.ActualWidth / antalCellerLangden);
+                    Canvas.SetTop(r, i * Brade.ActualHeight / antalCellerHojden);
+                    r.MouseDown += R_MouseDown;
                 }
             }
         }
