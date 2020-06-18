@@ -25,8 +25,9 @@ namespace GameOfLifeWithGUI
             InitializeComponent();
         }
 
-        int antalCellerLangden = 30;
-        int antalCellerHojden = 30;
+        const int antalCellerLangden = 30;
+        const int antalCellerHojden = 30;
+        Rectangle[,] falt = new Rectangle[antalCellerLangden , antalCellerHojden];
 
         private void ButtonStart(object sender, RoutedEventArgs e)
         {
@@ -44,6 +45,8 @@ namespace GameOfLifeWithGUI
                     Canvas.SetLeft(r, j * Brade.ActualWidth / antalCellerLangden);
                     Canvas.SetTop(r, i * Brade.ActualHeight / antalCellerHojden);
                     r.MouseDown += R_MouseDown;
+
+                    falt[i, j] = r;
                 }
             }
         }
@@ -61,21 +64,17 @@ namespace GameOfLifeWithGUI
 
         private void ButtonNext_Click(object sender, RoutedEventArgs e)
         {
-            int[] numberOfNeighbours;
+            int[,] numberOfNeighbours = new int[antalCellerHojden, antalCellerLangden];
             for (int i = 0; i < antalCellerHojden; i++)
             {
                 for (int j = 0; j < antalCellerLangden; j++)
                 {
-                    Rectangle r = new Rectangle();
-                    r.Width = Brade.ActualWidth / antalCellerLangden - 3.0;
-                    r.Height = Brade.ActualHeight / antalCellerHojden - 3.0;
-                    r.Fill = Brushes.Red;
-                    Brade.Children.Add(r);
-                    Canvas.SetLeft(r, j * Brade.ActualWidth / antalCellerLangden);
-                    Canvas.SetTop(r, i * Brade.ActualHeight / antalCellerHojden);
-                    r.MouseDown += R_MouseDown;
+                    int neighbours = 0;
+                    numberOfNeighbours[i, j] = neighbours;
                 }
             }
         }
+
+        
     }
 }
